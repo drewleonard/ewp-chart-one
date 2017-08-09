@@ -1,6 +1,6 @@
 body {
     font-family: 'Fira Sans', sans-serif;
-    font-weight: 300;
+    font-weight: 400;
     overflow-x: hidden;
     /*overflow: hidden;*/
 }
@@ -14,7 +14,6 @@ body {
 }
 
 .loader {
-
     position: fixed;
     left: 0;
     top: 0;
@@ -53,8 +52,23 @@ body {
 
 .title.sub {
     padding-top: 10px;
-    font-weight: 300;
+    font-weight: 400;
     font-size: 10px;
+    display: block;
+    clear: both;
+}
+
+.title.sub.right {
+    padding-top: 10px;
+    font-weight: 700;
+    font-size: 10px;
+    float: right;
+    /* display: table; */
+}
+
+.subTitleFloat {
+    display: block;
+    float: right;
 }
 
 .buttonContainer {
@@ -168,7 +182,7 @@ body {
 .headerTwoWrapper {
     float: left;
     font-weight: 700;
-    /* margin-top: 10px; */
+    text-transform: uppercase;
     padding: 5px;
     border: 1px solid black;
     margin-left: 20px;
@@ -247,7 +261,7 @@ br {
 }
 
 p.ttipPrimary {
-    font-size: 15px;
+    font-size: 18px;
     padding: 0;
     margin: 0;
     font-weight: 700;
@@ -268,32 +282,6 @@ p.ttipTertiary {
     padding: 0;
     margin: 0;
     font-weight: 400;
-}
-
-.metricText {
-    font-size: 14px;
-    padding: 0;
-    margin: 0;
-    font-weight: 300;
-    color: black;
-}
-
-.valsText {
-    width: 100px;
-    height: 100px;
-    -webkit-border-radius: 25px;
-    -moz-border-radius: 25px;
-    border-radius: 50px;
-    margin: 0px 25px 10px 25px;
-    opacity: 0.85;
-    display: inline-block;
-    float: left;
-    text-align: center;
-    line-height: 50px;
-    align-items: center;
-    font-size: 25px;
-    font-weight: 500;
-    font-family: var(--google-font);
 }
 
 sup {

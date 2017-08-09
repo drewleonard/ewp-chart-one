@@ -6,12 +6,13 @@
 // add mobile page teling you to go to desktop
 // finalize gist for meeting
 // add tab for about page
+// 
 
 /*------------------------------------
  LOADING SCREEN
  ------------------------------------*/
 
-var loadingLength = 1500;
+var loadingLength = 1;
 
 jQuery(document).ready(function($) {
     $(window).load(function() {
@@ -386,8 +387,8 @@ var colorScale = d3.scaleThreshold()
 var formatDecimal = d3.format(",.1%");
 
 // button selected
-var selectedButton = "all",
-    buttonArray = null;
+var selectedButton = "allIndex",
+    buttonArray = [];
 
 /*------------------------------------
  USING DATA
