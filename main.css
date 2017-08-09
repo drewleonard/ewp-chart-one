@@ -51,24 +51,15 @@ body {
 }
 
 .title.sub {
-    padding-top: 10px;
+    padding-top: 11px;
     font-weight: 400;
     font-size: 10px;
-    display: block;
-    clear: both;
-}
-
-.title.sub.right {
-    padding-top: 10px;
-    font-weight: 700;
-    font-size: 10px;
-    float: right;
-    /* display: table; */
 }
 
 .subTitleFloat {
     display: block;
     float: right;
+    font-size: 11px;
 }
 
 .buttonContainer {
