@@ -939,8 +939,12 @@ d3.queue()
                     .attr("height", second_yScale.bandwidth())
                     .transition()
                     .duration(durationMain)
-                    .attr("fill", function(d) {
-                        return colorScale((d / 100));
+                    .attr("fill", function(d, i) {
+                        if (selectedButton === "allIndex" || buttonArray.includes(i)) {
+                            return colorScale((d / 100));
+                        } else {
+                            return "#a9b1bc";
+                        }
                     })
                     .attr("width", function(d) {
                         return second_xScale(d);
