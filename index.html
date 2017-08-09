@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:400,400i,700" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <link rel="stylesheet" type="text/css" href="autocomplete.css">
+    <meta charset="utf-8">
+    <title>Risk Bar Chart</title>
+    <script src="d3.v4.min.js"></script>
+    <script src="jquery.js"></script>
+    <script src="jquery.autocomplete.js"></script>
+</head>
+
+<body>
+    <div class="loader"></div>
+    <div class="container" id="container">
+        <div class="titleWrapper" id="titleWrapper">
+            <div class="titleLeft" id="titleLeft">
+                <h1 class="title main" id="titlemain">Statistical Risk Assessments</h1>
+                <h2 class="title sub">
+                <i>Created by </i><b>Drew Leonard & Billy McGrath</b><br>
+                Data last updated Jul. 26, 2017
+            </h2>
+            </div>
+            <div class="titleRight" id="titleRight">
+                <input type=search class="searchBar" id="searchBar" autocomplete="off">
+                <div class="searchButton" id="searchButton">SEARCH</div>
+            </div>
+        </div>
+        <div id='buttonContainer' class='buttonContainer'>
+            <div id="sliderTtipContainer" class="sliderTtipContainer">
+                <div id="sliderTtip" class="sliderTtip"></div>
+            </div>
+            <div id="buttonTextContainer" class="buttonTextContainer">
+                <div id="buttonText" class="buttonText">Select forecast models:</div>
+                <div id="buttonButtonContainer" class="buttonButtonContainer">
+                    <div class="button current" data-val="all">All</div>
+                    <div class="button" data-val="badRegime">Bad Regime</div>
+                    <div class="button" data-val="eliteThreat">Elite Threat</div>
+                    <div class="button" data-val="randomForest" style="margin-right:0">Random Forest</div>
+                </div>
+            </div>
+        </div>
+        <div class="sliderContainer" id="sliderContainer">
+            <h1 id="sliderText" class="sliderText">Adjust countries selected:</h1>
+            <div id="sliderWrapper" class="sliderWrapper"></div>
+            <h2 id="resizeSliderText" class="sliderText">Adjust chart sizes:</h2>
+            <div id="resizeSliderWrapper" class="sliderWrapper"></div>
+        </div>
+        <div class="headerWrapper" id="headerWrapper">
+            <div class="headerOneWrapper" id="headerOneWrapper">
+                FORECASTS BY COUNTRY
+            </div>
+            <div class="headerTwoWrapper" id="headerTwoWrapper">
+                VARIABLES IN FORECASTS
+            </div>
+        </div>
+        <div class="chartWrapper" id="chartWrapper">
+            <div class="chartOne" id="chartOne"></div>
+            <div class="chartTwo" id="chartTwo"></div>
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+
+</html>
