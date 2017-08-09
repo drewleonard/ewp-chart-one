@@ -10,6 +10,7 @@ body {
     width: 95%;
     height: 95%;
     position: absolute;
+    min-width: 1190px;
     max-width: 1600px;
 }
 
@@ -59,7 +60,9 @@ body {
 .subTitleFloat {
     display: block;
     float: right;
-    font-size: 11px;
+    font-size: 10px;
+    font-weight: 400;
+    color: black;
 }
 
 .buttonContainer {
