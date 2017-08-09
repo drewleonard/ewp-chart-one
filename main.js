@@ -1,9 +1,8 @@
 //TODO
 // get new data
-// fix ttip
+// fix issue with button on page resize
 // fix binary variables// fix all the -20, and other hard coded values
 // add mobile page teling you to go to desktop
-// finalize gist for meeting
 
 /*------------------------------------
  LOADING SCREEN
