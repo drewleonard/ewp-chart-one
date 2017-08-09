@@ -6,13 +6,12 @@
 // add mobile page teling you to go to desktop
 // finalize gist for meeting
 // add tab for about page
-// 
 
 /*------------------------------------
  LOADING SCREEN
  ------------------------------------*/
 
-var loadingLength = 15;
+var loadingLength = 1500;
 
 jQuery(document).ready(function($) {
     $(window).load(function() {
