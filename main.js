@@ -2,7 +2,7 @@
 // fix all CSS
 // fix all JavaScript resizing
 // color selection goes away on search without click
-// add borders to ttip and search button
+// add borders to ttip and search
 // get new data
 // fix binary variables
 // fix all the -20, and other hard coded values
@@ -1245,7 +1245,7 @@ d3.queue()
 
                     } else if (numCharts > 0) {
 
-                        for (let i = 0; i <= numCharts; i++) {
+                        for (var i = 0; i <= numCharts; i++) {
 
                             setTimeout(function timer() {
                                 sliderHandle
@@ -1259,7 +1259,7 @@ d3.queue()
                         }
 
                     } else if (numCharts < 0) {
-                        for (let i = 0; i <= (numCharts * -1); i++) {
+                        for (var i = 0; i <= (numCharts * -1); i++) {
                             setTimeout(function timer() {
                                 sliderHandle
                                     .transition()
