@@ -232,7 +232,7 @@ function resizeSearch() {
         document.getElementById('searchButton').getBoundingClientRect().width;
 
     $('.searchBar').css("height", searchButtonHeight + searchButtonPadding - searchBarBorder);
-    $('.searchBar').css("width", newWidth / 1.5); // 1.5 for good measure?
+    $('.searchBar').css("width", newWidth / 1.5);
 }
 
 resizeSearch();
@@ -347,7 +347,9 @@ chartTwo.append("g")
 var sliderTtip = d3.select("#sliderTtip");
 
 $('.sliderTtipContainer').css('width', leftWidth);
-$('.buttonTextContainer').css('width', rightWidth - 20);
+var sampleButtonWidth = parseInt($('#buttonText').css('width')) + parseInt($('#buttonButtonContainer').css('width'));
+
+$('.buttonTextContainer').css('width', sampleButtonWidth * 1.1);
 
 var totalHeight = parseInt($('.buttonTextContainer').css('height'));
 var thisHeight = parseInt($('.buttonText').css('height'));
@@ -1245,7 +1247,7 @@ d3.queue()
 
                     } else if (numCharts > 0) {
 
-                        for (var i = 0; i <= numCharts; i++) {
+                        for (let i = 0; i <= numCharts; i++) {
 
                             setTimeout(function timer() {
                                 sliderHandle
@@ -1259,7 +1261,7 @@ d3.queue()
                         }
 
                     } else if (numCharts < 0) {
-                        for (var i = 0; i <= (numCharts * -1); i++) {
+                        for (let i = 0; i <= (numCharts * -1); i++) {
                             setTimeout(function timer() {
                                 sliderHandle
                                     .transition()

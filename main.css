@@ -282,10 +282,14 @@ input[type=search] {
 .ttip {
     width: 300px;
     position: relative;
-    background-color: rgba(255, 255, 255, 0.98);
+    /* solarized */
+    background-color: #fdf6e3;
+    /* background-color: rgba(255, 255, 255, 0.98); */
     display: none;
-    border: 3px solid;
+    border: 3px solid #586e75;
+    /* border: 3px solid; */
     padding: 5px;
+    color: #586e75;
 }
 
 .title br {
@@ -304,6 +308,7 @@ p.ttipPrimary {
     margin: 0;
     font-weight: 700;
     border-bottom: 2px solid currentcolor;
+    /* color: #dc322f; */
 }
 
 p.ttipSecondary {
@@ -320,4 +325,13 @@ p.ttipTertiary {
     padding: 0;
     margin: 0;
     font-weight: 400;
+}
+
+.xAxis line,
+path {
+    stroke: #586e75;
+}
+
+.xAxis text {
+    fill: #586e75;
 }
