@@ -1,15 +1,18 @@
 //TODO
+// fix all CSS
+// fix all JavaScript resizing
+// color selection goes away on search without click
+// add borders to ttip and search button
 // get new data
 // fix binary variables
 // fix all the -20, and other hard coded values
 // add mobile page teling you to go to desktop
-// solarized color pallette
 
 /*------------------------------------
  LOADING SCREEN
  ------------------------------------*/
 
-var loadingLength = 1;
+var loadingLength = 1500;
 
 jQuery(document).ready(function($) {
     $(window).load(function() {
@@ -959,7 +962,8 @@ d3.queue()
                         if (selectedButton === "allIndex" || buttonArray.includes(i)) {
                             return colorScale((d / 100));
                         } else {
-                            return "#a9b1bc";
+                            return "#93a1a1";
+                            // return "#a9b1bc";
                         }
                     })
                     .attr("width", function(d) {
@@ -1303,7 +1307,8 @@ d3.queue()
                         if (selectedButton === "allIndex" || buttonArray.includes(i)) {
                             return colorScale((d / 100));
                         } else {
-                            return "#a9b1bc"
+                            return "#93a1a1";
+                            // return "# a9b1bc ";
                         }
                     })
             }

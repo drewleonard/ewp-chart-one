@@ -23,7 +23,7 @@ body {
     width: 100%;
     height: 100%;
     overflow: visible;
-    background: #ffffff url('grid.svg') no-repeat center center;
+    background: #fdf6e3 url('grid.svg') no-repeat center center;
 }
 
 .titleWrapper {
