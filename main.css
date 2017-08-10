@@ -2,6 +2,7 @@ body {
     font-family: 'Fira Sans', sans-serif;
     font-weight: 400;
     overflow-x: hidden;
+    background-color: #fdf6e3;
     /*overflow: hidden;*/
 }
 
@@ -46,15 +47,21 @@ body {
 
 .title.main {
     font-size: 36px;
-    font-weight: 400;
-    border-bottom: 1px solid #D9D9D9;
+    font-weight: 700;
+    border-bottom: 1px solid #586e75;
+    /* border-bottom: 1px solid #D9D9D9; */
     display: inline;
+    /* solarized */
+    color: #dc322f;
+    /* color: #586e75; */
 }
 
 .title.sub {
     padding-top: 11px;
     font-weight: 400;
     font-size: 10px;
+    /* solarized */
+    color: #586e75;
 }
 
 .subTitleFloat {
@@ -62,7 +69,9 @@ body {
     float: right;
     font-size: 10px;
     font-weight: 400;
-    color: black;
+    /* solarized */
+    color: #586e75;
+    /* color: black; */
     font-style: italic;
 }
 
@@ -94,6 +103,8 @@ body {
     margin-top: 0;
     font-style: italic;
     vertical-align: middle;
+    /* solarized */
+    color: #586e75;
 }
 
 .buttonButtonContainer {
@@ -110,21 +121,27 @@ body {
     border-radius: 3px;
     margin: 10px 6px 10px 0;
     text-align: center;
-    color: white;
     position: relative;
-    background-color: #808080;
     opacity: 95%;
     border-radius: 3px;
     padding: 5px;
+    /* solarized */
+    color: #586e75;
+    /* color: white; */
+    background-color: #eee8d5
+    /* background-color: #808080; */
 }
 
 .button:hover {
-    background: #e0e0e0;
+    /* background: #e0e0e0; */
+    background: #fdf6e3;
 }
 
 .button.current {
-    background: #000;
-    color: #fff;
+    /* background: #000; */
+    background: #fdf6e3;
+    color: #586e75;
+    /* color: #fff; */
 }
 
 .sliderTtip {
@@ -133,12 +150,15 @@ body {
     width: 75px;
     margin: 10px 0 10px 0;
     text-align: center;
-    color: white;
     position: relative;
-    background-color: #808080;
     opacity: 95%;
     border-radius: 3px;
     padding: 5px;
+    /* solarized */
+    color: #586e75;
+    /* color: white; */
+    background-color: #eee8d5
+    /* background-color: #808080; */
 }
 
 .sliderContainer {
@@ -154,6 +174,8 @@ body {
     font-size: 13px;
     margin-top: 0;
     font-style: italic;
+    /* solarized */
+    color: #586e75;
 }
 
 .sliderWrapper {
@@ -171,7 +193,12 @@ body {
     font-weight: 700;
     text-transform: uppercase;
     padding: 5px;
-    border: 1px solid black;
+    /* solarized */
+    border: 1px solid #586e75;
+    /* border: 1px solid black; */
+    /* solarized */
+    /* color: #b58900; */
+    color: #586e75;
 }
 
 .headerTwoWrapper {
@@ -179,8 +206,13 @@ body {
     font-weight: 700;
     text-transform: uppercase;
     padding: 5px;
-    border: 1px solid black;
+    /* solarized */
+    border: 1px solid #586e75;
+    /* border: 1px solid black; */
     margin-left: 20px;
+    /* solarized */
+    /* color: #b58900; */
+    color: #586e75;
 }
 
 .chartWrapper {
@@ -207,19 +239,26 @@ body {
     display: inline;
     /*width: 100%;*/
     width: 400px;
-    border: 1px solid #D9D9D9;
+
     border-radius: 2px;
     height: 30px;
     outline: none;
+    /* solarized */
+    background-color: #eee8d5;
+    border: 1px solid #D9D9D9;
+    /* border: 1px solid #93a1a1; */
 }
 
 input[type=search] {
     font-size: 14px;
-    border: 1px solid #D9D9D9;
     height: 30px;
     border-radius: 2px;
     padding-left: 5px;
     padding-right: 25px;
+    /* solarized */
+    color: #586e75;
+    border: 1px solid #93a1a1;
+    /* border: 1px solid #D9D9D9; */
 }
 
 .searchButton {
@@ -227,13 +266,16 @@ input[type=search] {
     margin-left: 10px;
     border-radius: 3px;
     padding: 8px 8px 6px 8px;
-    background-color: #808080;
-    color: #fff;
     letter-spacing: 0.1em;
     align-self: center;
     text-transform: uppercase;
     cursor: pointer;
     white-space: nowrap;
+    /* solarized */
+    background-color: #eee8d5;
+    color: #586e75;
+    /* background-color: #808080; */
+    /* color: #fff; */
 }
 
 .ttip {
@@ -277,28 +319,4 @@ p.ttipTertiary {
     padding: 0;
     margin: 0;
     font-weight: 400;
-}
-
-sup {
-    font-size: 8px;
-}
-
-#raw {
-    background: #0d2a52;
-    color: rgba(255, 255, 255, 0.95);
-}
-
-#per {
-    color: rgba(255, 255, 255, 0.95);
-}
-
-.sourceText {
-    font-size: 12px;
-    color: #96989b;
-    font-style: italic;
-    padding: 0;
-    margin: 0;
-    font-weight: 300;
-    font-family: var(--google-font);
-    position: relative;
 }

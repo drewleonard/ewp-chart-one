@@ -1,8 +1,9 @@
 //TODO
 // get new data
-// fix issue with button on page resize
-// fix binary variables// fix all the -20, and other hard coded values
+// fix binary variables
+// fix all the -20, and other hard coded values
 // add mobile page teling you to go to desktop
+// solarized color pallette
 
 /*------------------------------------
  LOADING SCREEN
@@ -101,8 +102,11 @@ var bar = {
     clicked: null
 };
 
-var filled = "#0d2a52",
-    unfilled = "#E0E0E0";
+// var filled = "#0d2a52",
+//     unfilled = "#E0E0E0";
+// solarized
+var filled = "#586e75",
+    unfilled = "#e8e1ce";
 
 /*------------------------------------
  SLIDER
@@ -548,7 +552,8 @@ d3.queue()
                     .attr("height", "25%")
                     .attr("x", sliderHandleRadius)
                     .attr("y", "37.5%")
-                    .attr("fill", "black");
+                    .attr("fill", "#586e75");
+                // .attr("fill", "black");
 
                 sliderHandle = d3.select("#slider")
                     .append("circle")
@@ -559,7 +564,8 @@ d3.queue()
                     })
                     .attr("cy", "50%")
                     .attr("r", sliderHandleRadius)
-                    .attr("fill", "black")
+                    .attr("fill", "#586e75")
+                    // .attr("fill", "black")
                     .call(d3.drag()
                         .on("drag", dragged)
                         .on("end", function() {
@@ -606,7 +612,8 @@ d3.queue()
                     .attr("height", "25%")
                     .attr("x", resizeSliderHandleRadius)
                     .attr("y", "37.5%")
-                    .attr("fill", "black");
+                    .attr("fill", "#586e75");
+                // .attr("fill", "black");
 
                 resizeSliderHandle = d3.select("#resizeSlider")
                     .append("circle")
@@ -617,7 +624,8 @@ d3.queue()
                     })
                     .attr("cy", "50%")
                     .attr("r", resizeSliderHandleRadius)
-                    .attr("fill", "black")
+                    .attr("fill", "#586e75")
+                    // .attr("fill", "black")
                     .call(d3.drag()
                         .on("drag", resizeDragged)
                         .on("end", function() {
@@ -864,6 +872,7 @@ d3.queue()
                     .text(function(d) {
                         return d.country;
                     })
+                    .attr("fill", "#586e75")
                     .attr("font-size", function() {
                         return 9;
                     })
@@ -1002,8 +1011,8 @@ d3.queue()
                     .enter()
                     .append("rect")
                     .attr("class", "barTransparent")
-                    .attr("fill", "#a9b1bc")
-                    .attr("opacity", 0.2)
+                    // .attr("fill", "#a9b1bc")
+                    .attr("fill", unfilled)
                     .attr("stroke", "black")
                     .attr("stroke-opacity", 0)
                     .attr("stroke-width", 2)
@@ -1059,6 +1068,7 @@ d3.queue()
                     .attr("font-size", function() {
                         return second_yScale.bandwidth() / 1.5;
                     })
+                    .attr("fill", "#586e75")
                     .attr("x", function() {
                         var barLength = chartLabelWidth - bothChartPadding;
                         var textLength = this.getComputedTextLength();
