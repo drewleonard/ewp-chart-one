@@ -361,16 +361,26 @@ var ttip = d3.select("body")
 
 // eight step color scale
 var step = d3.scaleLinear()
-    .domain([0, 7])
+    .domain([0, 10])
     .range([0, 1]);
 
+var brewerColors = ["#a50026", "#d73027",
+    "#f46d43", "#fdae61",
+    "#fee08b", "#ffffbf",
+    "#d9ef8b", "#a6d96a",
+    "#66bd63", "#1a9850",
+    "#006837"
+].reverse()
+
 var colors = d3.scaleLinear()
-    .domain([0, step(1), step(2), step(3), step(4), step(5), step(6), 7])
-    .range(["#006600", "#00b33c",
-        "#53ff1a", "#ffff00",
-        "#ff9900", "#ff6600",
-        "#e60000", "#ff0000"
-    ]);
+    .domain([0, step(1), step(2), step(3), step(4), step(5), step(6), step(7), step(8), step(9), 10])
+    .range(brewerColors);
+// .range(["#006600", "#00b33c",
+//     "#53ff1a", "#ffff00",
+//     "#ff9900", "#ff6600",
+//     "#e60000", "#ff0000"
+// ])
+// ;
 
 var thresholds = [.1, .2, .3, .4, .5, .6, .7, .8, .9],
     color_intervals = [.05, .15, .25, .35, .45, .55, .65, .75, .85, .95];

@@ -139,8 +139,9 @@ body {
 
 .button.current {
     /* background: #000; */
-    background: #fdf6e3;
-    color: #586e75;
+    background: #586e75;
+    color: #eee8d5;
+
     /* color: #fff; */
 }
 
