@@ -1,13 +1,11 @@
 //TODO
 // fix all CSS
 // fix all JavaScript resizing
-// color selection goes away on search without click
-// add borders to ttip and search
 // get new data
 // fix binary variables
 // fix all the -20, and other hard coded values
 // add mobile page teling you to go to desktop
-// detect safari 9?
+// r -- first / dependent variables?
 
 /*------------------------------------
  LOADING SCREEN
@@ -32,14 +30,15 @@ var dictionary_data = "cjh12sep2016.csv", // main data
     badRegime = "badRegime.csv", // list of variables in bad regime model
     eliteThreat = "eliteThreat.csv", // list of variables in elite threat model
     randomForest = "randomForest.csv", // list of variables in random forest model
-    secondChartData = "secondChartData.csv"; // order and labels of second chart data
+    secondChartData = "secondChartData.csv", // order and labels of second chart data
+    firstChartData = "firstChartData.csv";
 
 // function to reorder data
 function reorderDict(object, orderedList) {
 
     tempDict = {};
     for (var i = 0; i < orderedList.length; i++) {
-        test = object[orderedList[i]];
+        var test = object[orderedList[i]];
         tempDict[orderedList[i]] = test;
     }
     return tempDict;
@@ -65,9 +64,10 @@ var forecast = [], // ordered list
     forecastFull = [],
     varDict = {}, // dictionary
     varDictKeys = [],
+    varDictChartOne = {},
     varDictFull = {};
 
-var reordered = [], // for second chart datax
+var reordered = [], // for second chart data
     labels = [], // for second chart labels
     ttipVar = [],
     ttipMetric = [],
@@ -106,9 +106,6 @@ var bar = {
     clicked: null
 };
 
-// var filled = "#0d2a52",
-//     unfilled = "#E0E0E0";
-// solarized
 var filled = "#586e75",
     unfilled = "#e8e1ce";
 
@@ -361,6 +358,10 @@ var ttip = d3.select("body")
     .append("div")
     .attr("class", "ttip");
 
+var ttipChartOne = d3.select("body")
+    .append("div")
+    .attr("class", "ttip");
+
 /*------------------------------------
  EXTRA VARS TO USE + CLEAN
  ------------------------------------*/
@@ -370,7 +371,8 @@ var step = d3.scaleLinear()
     .domain([0, 10])
     .range([0, 1]);
 
-var brewerColors = ["#a50026", "#d73027",
+var brewerColors = [
+    "#a50026", "#d73027",
     "#f46d43", "#fdae61",
     "#fee08b", "#ffffbf",
     "#d9ef8b", "#a6d96a",
@@ -381,12 +383,6 @@ var brewerColors = ["#a50026", "#d73027",
 var colors = d3.scaleLinear()
     .domain([0, step(1), step(2), step(3), step(4), step(5), step(6), step(7), step(8), step(9), 10])
     .range(brewerColors);
-// .range(["#006600", "#00b33c",
-//     "#53ff1a", "#ffff00",
-//     "#ff9900", "#ff6600",
-//     "#e60000", "#ff0000"
-// ])
-// ;
 
 var thresholds = [.1, .2, .3, .4, .5, .6, .7, .8, .9],
     color_intervals = [.05, .15, .25, .35, .45, .55, .65, .75, .85, .95];
@@ -412,11 +408,12 @@ var selectedButton = "allIndex",
 
 d3.queue()
     .defer(d3.csv, dictionary_data)
+    .defer(d3.csv, firstChartData)
     .defer(d3.csv, secondChartData)
     .defer(d3.csv, badRegime)
     .defer(d3.csv, eliteThreat)
     .defer(d3.csv, randomForest)
-    .await(function(error, dictionary_data, secondChartData, badRegime, eliteThreat, randomForest) {
+    .await(function(error, dictionary_data, firstChartData, secondChartData, badRegime, eliteThreat, randomForest) {
 
         if (error) {
             console.error(error);
@@ -444,15 +441,17 @@ d3.queue()
                         newCountry[newProp] = Number(newCountry[newProp]);
                     }
                 }
+
                 reorderedNewCountry = reorderDict(newCountry, reordered);
 
                 // pushing data to relevant locations
                 forecastFull.push(newCountry);
                 varDictFull[dictionary_data[i].country] = reorderedNewCountry;
                 varDictKeys.push(dictionary_data[i].country);
-                options.push(dictionary_data[i].country);
+                options.push(dictionary_data[i].country); // for resizing text
             }
 
+            // console.log(varDictChartOne);
             for (mod in varDictFull[forecastFull[0].country]) {
 
                 // check if variable is relevant
@@ -629,7 +628,6 @@ d3.queue()
                     .attr("x", resizeSliderHandleRadius)
                     .attr("y", "37.5%")
                     .attr("fill", "#586e75");
-                // .attr("fill", "black");
 
                 resizeSliderHandle = d3.select("#resizeSlider")
                     .append("circle")
@@ -641,7 +639,6 @@ d3.queue()
                     .attr("cy", "50%")
                     .attr("r", resizeSliderHandleRadius)
                     .attr("fill", "#586e75")
-                    // .attr("fill", "black")
                     .call(d3.drag()
                         .on("drag", resizeDragged)
                         .on("end", function() {
@@ -860,6 +857,9 @@ d3.queue()
                             return unfilled;
                         }
                     })
+                    .attr("stroke", "#586e75")
+                    .attr("stroke-opacity", 0)
+                    .attr("stroke-width", 4)
                     .attr("x", chartLabelWidth)
                     .attr("y", function(d) {
                         return first_yScale(d.country)
@@ -1049,7 +1049,7 @@ d3.queue()
                     .attr("fill", function(d) {
                         return colorScale((d / 100));
                     })
-                    .attr("stroke", "black")
+                    .attr("stroke", "#586e75")
                     .attr("stroke-opacity", 0)
                     .attr("stroke-width", 2)
                     .attr("x", chartLabelWidth)
@@ -1128,18 +1128,58 @@ d3.queue()
                     pushVariableData(currentCountry);
                     drawSecondChart(selectedMagnitude);
                 })
-                .on("mouseover", function() {
+                .on("mouseover", function(d) {
 
-                    if (dragging === false) {
+                    if (dragging === false && resizeDragging === false) {
 
-                        //fill bar
+                        // fill bar
                         d3.select(this)
                             .attr("fill", filled);
 
+                        // add tooltip
+                        var lineSumm = '<p class="ttipPrimaryOne">' + d.country +
+                            '<span class="ttipSecondaryOne">' + ' faces a ' + '</span>' +
+                            formatDecimal(d.mean_p) +
+                            '<span class="ttipSecondaryOne">' + " risk of a state-led mass killing in " + '</span>' +
+                            "2015" + '</p>' + '</br class="secondary">',
+                            lineExplan = '<p class="ttipTertiaryOne">' +
+                            "This forecast is an average of risk scores from three statistical models:  Bad Regime, Elite Threat, and Random Forest." +
+                            '</p>';
+
+
+
+                        ttipChartOne
+                            .style("display", "inline-block")
+                            .html(lineSumm + lineExplan);
                     }
 
                 })
+                .on("mousemove", function() {
+
+                    ttipChartOne
+                        .style("top", function() {
+
+                            var ttipHeight = $(this).height();
+                            var chartPos = $(".chartOne").position().top;
+
+                            if ((ttipHeight + d3.event.pageY - chartPos) <= bothChartHeight) {
+                                return d3.event.pageY + margin.ttip + "px";
+                            } else {
+                                return d3.event.pageY - ttipHeight - (margin.ttip * 2) + "px";
+                            }
+
+
+                        })
+                        .style("left", function() {
+
+                            var ttipWidth = $(this).width();
+                            return d3.event.pageX - ttipWidth / 2 + "px";
+
+                        });
+                })
                 .on("mouseout", function(d) {
+
+                    ttipChartOne.style("display", "none");
 
                     if (d.country !== currentCountry) {
                         d3.select(this)
@@ -1202,7 +1242,7 @@ d3.queue()
                             var ttipWidth = $(this).width();
                             return d3.event.pageX - ttipWidth / 2 + "px";
 
-                        }); // figure out why 1.1 is best
+                        });
                 })
                 .on("mouseout", function() {
                     // new ttip stuff
