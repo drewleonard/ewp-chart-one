@@ -7,6 +7,9 @@
 // add mobile page teling you to go to desktop
 // r -- first / dependent variables?
 
+// MISC
+var scrolling = false;
+
 /*------------------------------------
  LOADING SCREEN
  ------------------------------------*/
@@ -568,7 +571,6 @@ d3.queue()
                     .attr("x", sliderHandleRadius)
                     .attr("y", "37.5%")
                     .attr("fill", "#586e75");
-                // .attr("fill", "black");
 
                 sliderHandle = d3.select("#slider")
                     .append("circle")
@@ -580,7 +582,6 @@ d3.queue()
                     .attr("cy", "50%")
                     .attr("r", sliderHandleRadius)
                     .attr("fill", "#586e75")
-                    // .attr("fill", "black")
                     .call(d3.drag()
                         .on("drag", dragged)
                         .on("end", function() {
@@ -660,7 +661,7 @@ d3.queue()
 
                 // positioning slider
                 var handlePos = document.getElementById('sliderHandle').getBoundingClientRect().left +
-                    (document.getElementById('sliderHandle').getBoundingClientRect().width / 2)
+                    (document.getElementById('sliderHandle').getBoundingClientRect().width / 2);
 
                 var leftLimit = document.getElementById('sliderWrapper').getBoundingClientRect().left +
                     (sliderTtipWidth / 2),
@@ -690,11 +691,12 @@ d3.queue()
                         return sliderStart + sliderHandleRadius;
                     }
 
-                    return d3.event.x;
+                    return d3.event.x + (sliderHandleRadius / 2);
 
                 });
 
-                var handlePos = document.getElementById('sliderHandle').getAttribute('cx');
+                var handlePos = document.getElementById('sliderHandle')
+                    .getAttribute('cx');
 
                 countryStart = sliderScale(handlePos);
                 countryEnd = sliderScale(handlePos) + numCountries;
@@ -966,7 +968,6 @@ d3.queue()
                             return colorScale((d / 100));
                         } else {
                             return "#93a1a1";
-                            // return "#a9b1bc";
                         }
                     })
                     .attr("width", function(d) {
@@ -1028,7 +1029,6 @@ d3.queue()
                     .enter()
                     .append("rect")
                     .attr("class", "barTransparent")
-                    // .attr("fill", "#a9b1bc")
                     .attr("fill", unfilled)
                     .attr("stroke", "black")
                     .attr("stroke-opacity", 0)
@@ -1141,12 +1141,10 @@ d3.queue()
                             '<span class="ttipSecondaryOne">' + ' faces a ' + '</span>' +
                             formatDecimal(d.mean_p) +
                             '<span class="ttipSecondaryOne">' + " risk of a state-led mass killing in " + '</span>' +
-                            "2015" + '</p>' + '</br class="secondary">',
+                            "2015." + '</p>' + '</br class="secondary">',
                             lineExplan = '<p class="ttipTertiaryOne">' +
                             "This forecast is an average of risk scores from three statistical models:  Bad Regime, Elite Threat, and Random Forest." +
                             '</p>';
-
-
 
                         ttipChartOne
                             .style("display", "inline-block")
@@ -1235,7 +1233,6 @@ d3.queue()
                                 return d3.event.pageY - ttipHeight - (margin.ttip * 2) + "px";
                             }
 
-
                         })
                         .style("left", function() {
 
@@ -1251,6 +1248,46 @@ d3.queue()
                     d3.select(this)
                         .style("stroke-opacity", 0);
                 });
+
+            var scrollIndex = 0;
+            var scrollSensitivity = 2;
+
+            $('#chartOne').on('mousewheel', function(event) {
+                scrollIndex += 1;
+                console.log(countryStart);
+                if (event.deltaY < 0 && scrollIndex % scrollSensitivity === 0) {
+
+                    if (countryEnd < dictionary_data.length) {
+
+                        countryStart = countryStart + 1;
+                        countryEnd = countryEnd + 1;
+                        sliderHandle
+                            .transition()
+                            .duration(10)
+                            .attr("cx", sliderScale.invert(countryStart));
+                        drawFirstChart(countryStart, countryEnd, 0, selectedMagnitude);
+                        drawSliderTtip(countryStart, countryEnd);
+                    }
+
+                } else if (event.deltaY > 0 && scrollIndex % scrollSensitivity === 0) {
+
+                    if (countryStart > 0) {
+                        countryStart = countryStart - 1;
+                        countryEnd = countryEnd - 1;
+                        sliderHandle
+                            .transition()
+                            .duration(10)
+                            .attr("cx", sliderScale.invert(countryStart));
+                        drawFirstChart(countryStart, countryEnd, 0, selectedMagnitude);
+                        drawSliderTtip(countryStart, countryEnd);
+                    }
+                }
+
+            });
+
+            // d3.selectAll(".chartOne").on("zoom", function() {
+            //     console.log("HERE");
+            // })
 
             function searched() {
 
@@ -1341,18 +1378,18 @@ d3.queue()
                             return colorScale((d / 100));
                         } else {
                             return "#93a1a1";
-                            // return "# a9b1bc ";
                         }
                     })
             }
 
-            d3.selectAll(".button").on("click", function() {
-                selectedButton = d3.select(this).attr("data-val") + "Index";
-                buttonArray = window[selectedButton];
-                d3.select(".current").classed("current", false);
-                d3.select(this).classed("current", true);
-                modelUpdate();
-            });
+            d3.selectAll(".button")
+                .on("click", function() {
+                    selectedButton = d3.select(this).attr("data-val") + "Index";
+                    buttonArray = window[selectedButton];
+                    d3.select(".current").classed("current", false);
+                    d3.select(this).classed("current", true);
+                    modelUpdate();
+                });
 
 
             function resize() {
