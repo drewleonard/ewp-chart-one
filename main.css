@@ -1,7 +1,7 @@
 body {
     font-family: 'Fira Sans', sans-serif;
     font-weight: 400;
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
     background-color: #fdf6e3;
     /*overflow: hidden;*/
 }
