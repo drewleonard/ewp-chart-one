@@ -8,7 +8,7 @@
 // r -- first / dependent variables?
 
 // MISC
-var scrolling = false;
+$(window).bind('mousewheel DOMMouseScroll', function(event) { return false });
 
 /*------------------------------------
  LOADING SCREEN
