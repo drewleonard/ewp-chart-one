@@ -1255,33 +1255,33 @@ d3.queue()
 
                     } else if (numCharts > 0) {
 
-                        for (var i = 0; i <= numCharts; i++) {
-
-                            setTimeout(function timer() {
-                                sliderHandle
-                                    .transition()
-                                    .duration(10)
-                                    .attr("cx", sliderScale.invert(oldCountryStart + i));
-                                drawFirstChart(oldCountryStart + i, oldCountryEnd + i, 10, selectedMagnitude);
-                                drawSliderTtip(oldCountryStart + i, oldCountryEnd + i);
-                            }, i * 10);
-
+                        for (var i = 0; i < numCharts; i++) {
+                            (function(i) {
+                                setTimeout(function timer() {
+                                    sliderHandle
+                                        .transition()
+                                        .duration(10)
+                                        .attr("cx", sliderScale.invert(oldCountryStart + i));
+                                    drawFirstChart(oldCountryStart + i, oldCountryEnd + i, 10, selectedMagnitude);
+                                    drawSliderTtip(oldCountryStart + i, oldCountryEnd + i);
+                                }, i * 10);
+                            })(i);
                         }
 
                     } else if (numCharts < 0) {
 
                         for (var i = 0; i <= (numCharts * -1); i++) {
-                            setTimeout(function timer() {
-                                sliderHandle
-                                    .transition()
-                                    .duration(10)
-                                    .attr("cx", sliderScale.invert(oldCountryStart - i));
-                                drawFirstChart(oldCountryStart - i, oldCountryEnd - i, 10, selectedMagnitude);
-                                drawSliderTtip(oldCountryStart - i, oldCountryEnd - i);
-                            }, i * 10);
-
+                            (function(i) {
+                                setTimeout(function timer() {
+                                    sliderHandle
+                                        .transition()
+                                        .duration(10)
+                                        .attr("cx", sliderScale.invert(oldCountryStart - i));
+                                    drawFirstChart(oldCountryStart - i, oldCountryEnd - i, 10, selectedMagnitude);
+                                    drawSliderTtip(oldCountryStart - i, oldCountryEnd - i);
+                                }, i * 10);
+                            })(i);
                         }
-
                     }
 
                     pushVariableData(currentCountry);
