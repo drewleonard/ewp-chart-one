@@ -8,7 +8,17 @@
 // r -- first / dependent variables?
 
 // Preventing page from scrolling on mousewheel event
-$(window).bind('mousewheel DOMMouseScroll', function(event) { return false });
+// $(window).bind('mousewheel DOMMouseScroll', function(event) { return false });
+$(window).on('scroll', function() {
+    var dh = $(document).height(),
+        wh = $(window).height(),
+        st = $(window).scrollTop();
+    if (st <= 0) {
+        $(this).scrollTop(0);
+    } else if (st + wh >= dh) {
+        $(this).scrollTop(dh);
+    }
+});
 
 /*------------------------------------
  LOADING SCREEN
