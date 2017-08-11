@@ -7,6 +7,14 @@
 // fix binary variables
 // fix all the -20, and other hard coded values
 // add mobile page teling you to go to desktop
+// detect safari 9?
+
+/*------------------------------------
+ LOADING SCREEN
+ ------------------------------------*/
+
+var safari = navigator.userAgent.indexOf("Safari") > -1;
+console.log($.browser);
 
 /*------------------------------------
  LOADING SCREEN
@@ -1247,7 +1255,7 @@ d3.queue()
 
                     } else if (numCharts > 0) {
 
-                        for (let i = 0; i <= numCharts; i++) {
+                        for (var i = 0; i <= numCharts; i++) {
 
                             setTimeout(function timer() {
                                 sliderHandle
@@ -1261,7 +1269,8 @@ d3.queue()
                         }
 
                     } else if (numCharts < 0) {
-                        for (let i = 0; i <= (numCharts * -1); i++) {
+
+                        for (var i = 0; i <= (numCharts * -1); i++) {
                             setTimeout(function timer() {
                                 sliderHandle
                                     .transition()
@@ -1270,7 +1279,9 @@ d3.queue()
                                 drawFirstChart(oldCountryStart - i, oldCountryEnd - i, 10, selectedMagnitude);
                                 drawSliderTtip(oldCountryStart - i, oldCountryEnd - i);
                             }, i * 10);
+
                         }
+
                     }
 
                     pushVariableData(currentCountry);
