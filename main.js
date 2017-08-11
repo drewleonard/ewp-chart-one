@@ -7,7 +7,7 @@
 // add mobile page teling you to go to desktop
 // r -- first / dependent variables?
 
-// MISC
+// Preventing page from scrolling on mousewheel event
 $(window).bind('mousewheel DOMMouseScroll', function(event) { return false });
 
 /*------------------------------------
@@ -1146,9 +1146,11 @@ d3.queue()
                             "This forecast is an average of risk scores from three statistical models:  Bad Regime, Elite Threat, and Random Forest." +
                             '</p>';
 
-                        ttipChartOne
-                            .style("display", "inline-block")
-                            .html(lineSumm + lineExplan);
+                        if (window.scrollY === 0) {
+                            ttipChartOne
+                                .style("display", "inline-block")
+                                .html(lineSumm + lineExplan);
+                        }
                     }
 
                 })
@@ -1252,38 +1254,40 @@ d3.queue()
             var scrollIndex = 0;
             var scrollSensitivity = 2;
 
-            $('#chartOne').on('mousewheel', function(event) {
-                scrollIndex += 1;
-                console.log(countryStart);
-                if (event.deltaY < 0 && scrollIndex % scrollSensitivity === 0) {
+            $('#chartOne')
+                .on('mousewheel', function(event) {
+                    ttipChartOne.style("display", "none");
+                    scrollIndex += 1;
+                    console.log(countryStart);
+                    if (event.deltaY < 0 && scrollIndex % scrollSensitivity === 0) {
 
-                    if (countryEnd < dictionary_data.length) {
+                        if (countryEnd < dictionary_data.length) {
 
-                        countryStart = countryStart + 1;
-                        countryEnd = countryEnd + 1;
-                        sliderHandle
-                            .transition()
-                            .duration(10)
-                            .attr("cx", sliderScale.invert(countryStart));
-                        drawFirstChart(countryStart, countryEnd, 0, selectedMagnitude);
-                        drawSliderTtip(countryStart, countryEnd);
+                            countryStart = countryStart + 1;
+                            countryEnd = countryEnd + 1;
+                            sliderHandle
+                                .transition()
+                                .duration(10)
+                                .attr("cx", sliderScale.invert(countryStart));
+                            drawFirstChart(countryStart, countryEnd, 0, selectedMagnitude);
+                            drawSliderTtip(countryStart, countryEnd);
+                        }
+
+                    } else if (event.deltaY > 0 && scrollIndex % scrollSensitivity === 0) {
+
+                        if (countryStart > 0) {
+                            countryStart = countryStart - 1;
+                            countryEnd = countryEnd - 1;
+                            sliderHandle
+                                .transition()
+                                .duration(10)
+                                .attr("cx", sliderScale.invert(countryStart));
+                            drawFirstChart(countryStart, countryEnd, 0, selectedMagnitude);
+                            drawSliderTtip(countryStart, countryEnd);
+                        }
                     }
 
-                } else if (event.deltaY > 0 && scrollIndex % scrollSensitivity === 0) {
-
-                    if (countryStart > 0) {
-                        countryStart = countryStart - 1;
-                        countryEnd = countryEnd - 1;
-                        sliderHandle
-                            .transition()
-                            .duration(10)
-                            .attr("cx", sliderScale.invert(countryStart));
-                        drawFirstChart(countryStart, countryEnd, 0, selectedMagnitude);
-                        drawSliderTtip(countryStart, countryEnd);
-                    }
-                }
-
-            });
+                });
 
             // d3.selectAll(".chartOne").on("zoom", function() {
             //     console.log("HERE");
