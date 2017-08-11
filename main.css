@@ -158,7 +158,8 @@ body {
     /* solarized */
     color: #586e75;
     /* color: white; */
-    background-color: #eee8d5
+    background-color: #eee8d5;
+    border: 1px solid #D9D9D9;
     /* background-color: #808080; */
 }
 
@@ -246,7 +247,7 @@ body {
     outline: none;
     /* solarized */
     background-color: #eee8d5;
-    border: 1px solid #D9D9D9;
+    /* border: 1px solid #D9D9D9; */
     /* border: 1px solid #93a1a1; */
 }
 
@@ -258,7 +259,8 @@ input[type=search] {
     padding-right: 25px;
     /* solarized */
     color: #586e75;
-    border: 1px solid #93a1a1;
+    /* border: 1px solid #93a1a1; */
+    border: 1px solid #D9D9D9;
     /* border: 1px solid #D9D9D9; */
 }
 
@@ -275,6 +277,7 @@ input[type=search] {
     /* solarized */
     background-color: #eee8d5;
     color: #586e75;
+    border: 1px solid #D9D9D9;
     /* background-color: #808080; */
     /* color: #fff; */
 }

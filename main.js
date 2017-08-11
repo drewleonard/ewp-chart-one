@@ -13,14 +13,7 @@
  LOADING SCREEN
  ------------------------------------*/
 
-var safari = navigator.userAgent.indexOf("Safari") > -1;
-console.log($.browser);
-
-/*------------------------------------
- LOADING SCREEN
- ------------------------------------*/
-
-var loadingLength = 1500;
+var loadingLength = 10;
 
 jQuery(document).ready(function($) {
     $(window).load(function() {
@@ -1129,6 +1122,7 @@ d3.queue()
                         });
 
                     currentCountry = d.country;
+
                     bar.clicked = this;
 
                     pushVariableData(currentCountry);
@@ -1145,20 +1139,9 @@ d3.queue()
                     }
 
                 })
-                .on("mouseout", function() {
+                .on("mouseout", function(d) {
 
-                    var topBar = d3.min(forecast, function(d) {
-                        return first_yScale(d.country);
-                    });
-
-                    if (bar.clicked === null && d3.format(".2f")(this.y.animVal.value) !==
-                        d3.format(".2f")(topBar)) {
-                        d3.select(this)
-                            .transition()
-                            .duration(250)
-                            .attr("fill", unfilled);
-
-                    } else if (bar.clicked !== null && this !== bar.clicked) {
+                    if (d.country !== currentCountry) {
                         d3.select(this)
                             .transition()
                             .duration(250)
@@ -1170,8 +1153,6 @@ d3.queue()
                 .on("mouseover", function(d, i) {
 
                     if (dragging === false && resizeDragging === false) {
-
-                        // var truncateVal = truncateDecimals(varVals[i], 4)
 
                         var lineTitle = '<p class="ttipPrimary">' + ttipVar[i] + '</p>',
                             lineMetric = '<p class="ttipSecondary">' + "Metric" + '</p>',
@@ -1246,7 +1227,6 @@ d3.queue()
                         numCountries), varDictKeys.length);
 
                     currentCountry = searched;
-
                     var numCharts = countryEnd - oldCountryEnd;
 
                     if (Math.abs(numCharts) < 20) {

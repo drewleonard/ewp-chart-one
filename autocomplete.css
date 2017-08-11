@@ -3,15 +3,10 @@
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     color: #586e75;
-    /* border: 1px solid #D9D9D9; */
     border: 1px solid #93a1a1;
-    /* background: #FFF; */
     background: #eee8d5;
     cursor: default;
     overflow: auto;
-    /*-webkit-box-shadow: 1px 4px 3px rgba(50, 50, 50, 0.64);
-    -moz-box-shadow: 1px 4px 3px rgba(50, 50, 50, 0.64);
-    box-shadow: 1px 4px 3px rgba(50, 50, 50, 0.64);*/
 }
 
 .autocomplete-suggestion {
@@ -20,27 +15,11 @@
     overflow: hidden;
 }
 
-
-/*.autocomplete-no-suggestion {
-    padding: 2px 5px;
-}*/
-
 .autocomplete-selected {
-    background: #F0F0F0;
+    background: #fdf6e3;
 }
 
 .autocomplete-suggestions strong {
     font-weight: bold;
-    /* color: #000; */
     color: #586e75;
 }
-
-
-/*.autocomplete-group {
-    padding: 2px 5px;
-    font-weight: bold;
-    font-size: 16px;
-    color: #000;
-    display: block;
-    border-bottom: 1px solid #000;
-}*/
