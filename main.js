@@ -9,22 +9,22 @@
 
 // Preventing page from scrolling on mousewheel event
 // $(window).bind('mousewheel DOMMouseScroll', function(event) { return false });
-$(window).on('scroll', function() {
-    var dh = $(document).height(),
-        wh = $(window).height(),
-        st = $(window).scrollTop();
-    if (st <= 0) {
-        $(this).scrollTop(0);
-    } else if (st + wh >= dh) {
-        $(this).scrollTop(dh);
-    }
-});
+// $(window).on('scroll', function() {
+//     var dh = $(document).height(),
+//         wh = $(window).height(),
+//         st = $(window).scrollTop();
+//     if (st <= 0) {
+//         $(this).scrollTop(0);
+//     } else if (st + wh >= dh) {
+//         $(this).scrollTop(dh);
+//     }
+// });
 
 /*------------------------------------
  LOADING SCREEN
  ------------------------------------*/
 
-var loadingLength = 10;
+var loadingLength = 1500;
 
 jQuery(document).ready(function($) {
     $(window).load(function() {
@@ -397,8 +397,8 @@ var colors = d3.scaleLinear()
     .domain([0, step(1), step(2), step(3), step(4), step(5), step(6), step(7), step(8), step(9), 10])
     .range(brewerColors);
 
-var thresholds = [.1, .2, .3, .4, .5, .6, .7, .8, .9],
-    color_intervals = [.05, .15, .25, .35, .45, .55, .65, .75, .85, .95];
+var thresholds = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9],
+    color_intervals = [0.05, 0.15, 0.25, 0.35, 0.45, 0.55, 0.65, 0.75, 0.85, 0.95];
 
 var shades = color_intervals.map(function(t) {
     return colors(t);
@@ -429,7 +429,9 @@ d3.queue()
     .await(function(error, dictionary_data, firstChartData, secondChartData, badRegime, eliteThreat, randomForest) {
 
         if (error) {
+
             console.error(error);
+
         } else {
 
             for (var i = 0; i < secondChartData["columns"].length; i += 5) {
@@ -1268,7 +1270,6 @@ d3.queue()
                 .on('mousewheel', function(event) {
                     ttipChartOne.style("display", "none");
                     scrollIndex += 1;
-                    console.log(countryStart);
                     if (event.deltaY < 0 && scrollIndex % scrollSensitivity === 0) {
 
                         if (countryEnd < dictionary_data.length) {
@@ -1298,10 +1299,6 @@ d3.queue()
                     }
 
                 });
-
-            // d3.selectAll(".chartOne").on("zoom", function() {
-            //     console.log("HERE");
-            // })
 
             function searched() {
 
