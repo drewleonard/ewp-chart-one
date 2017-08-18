@@ -1,4 +1,3 @@
-html,
 body {
     font-family: 'Fira Sans', sans-serif;
     font-weight: 400;
@@ -19,7 +18,7 @@ body {
     position: fixed;
     left: 0;
     top: 0;
-    z-index: 998;
+    z-index: 500;
     width: 100%;
     height: 100%;
     overflow: visible;
@@ -28,7 +27,7 @@ body {
 
 .error {
     position: relative;
-    z-index: 999;
+    z-index: 700;
     font-family: 'Fira Sans', sans-serif;
     font-size: 30px;
     color: #268bd2;
@@ -37,7 +36,6 @@ body {
     background-color: #eee8d5;
     clear: both;
     margin: 0 auto;
-    /* margin-top: 25%; */
 }
 
 .titleWrapper {
