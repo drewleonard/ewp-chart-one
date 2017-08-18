@@ -12,13 +12,16 @@ var safari = navigator.userAgent.indexOf("Safari") > -1;
 
 if (safari === true) {
 
+    console.log(safari);
+
     // change loader
     $(".loader").css("background", "#fdf6e3")
 
     // add error
     d3.select("body")
         .append("div")
-        .html("Error: This interactive is not supported by Safari." + "<br/>" + "Please use another browser, such as Chrome or Firefox.")
+        .html("Error: This interactive is not supported by Safari." + "<br/>" +
+            "Please use another browser, such as Chrome or Firefox.")
         .attr("class", "error")
 
 } else {
