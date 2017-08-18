@@ -8,11 +8,9 @@
 // r -- first / dependent variables?
 // add flacivon
 
-var safari = navigator.userAgent.indexOf("Safari") > -1;
+if ($.browser.safari === true) {
 
-if (safari === true) {
-
-    console.log(safari);
+    // console.log(safari);
 
     // change loader
     $(".loader").css("background", "#fdf6e3")
