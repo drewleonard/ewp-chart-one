@@ -1,6 +1,5 @@
 # Early Warning Project: Risks of State-Led Mass Killings
-<!-- <a href="https://www.earlywarningproject.org/"><img src="https://www.ushmm.org/m/img/EWP-logo.jpg" align="left" hspace="10" vspace="6"></a> -->
-
+<a href="https://www.earlywarningproject.org/"><img src="https://www.ushmm.org/m/img/EWP-logo.jpg" align="left" hspace="10" vspace="6"></a>
 This project visualizes the risks of state-led mass killings around the world. It is part of the <a href="https://www.earlywarningproject.org/">Early Warning Project</a>, an initiative to warn governments, advocacy groups, and at-risk societies of mass atrocities early. The interactive charts featured in this project allow users to view each country's statistical risk assessment and the variables that go into it. Risk assessments are averages of forecasts from three models: Bad Regime, Elite Threat, and Random Forest. These models represents different ideas about the origins of mass atrocities, and are developed from historical data that compare cases where state-led mass killings occurred to ones where they didn’t. Users can explore the values each country takes on for the variables comprising those models, and the percentile ranking of those values compared to all countries across all years included in the dataset. 
 
 Countries included are those with populations above 500,000.
@@ -8,10 +7,6 @@ Countries included are those with populations above 500,000.
 ## About This Visualization
 
 This interactive visualization is created with JavaScript, HTML5, and CSS3. The JavaScript libraries used are <a href="https://d3js.org/">D3</a> and <a href="https://jquery.com/">jQuery</a>. The project is hosted with <a href="https://bl.ocks.org/-/about">bl.ocks.org</a>, which is a viewer for code hosted on <a href="https://gist.github.com/">GitHub Gist</a>. Please see the <a href="https://github.com/drewleonard/ewp-risk">GitHub repository</a> to learn more about the code. This project uses the <a href="http://ethanschoonover.com/solarized">Solarized color palette</a> for most elements.
-
-## The Early Warning Project
-
-<!-- The <a href="https://www.earlywarningproject.org/">Early Warning Project</a> is an in -->
 
 ## Data Sources
 
@@ -30,5 +25,3 @@ Please see <a href="http://www.earlywarningproject.com/2015/03/19/data-sources">
 ## Authors
 
 This project was designed and built by Drew Leonard and Billy McGrath. They are undergraduates at Dartmouth College, working through the Government Department and John Sloan Dickey Center for International Understanding.
-
-## Acknowledgements
