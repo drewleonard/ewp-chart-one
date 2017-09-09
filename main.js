@@ -1435,4 +1435,3 @@ if ($.browser.safari === true) {
     // });
 
 }
-}
